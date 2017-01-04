@@ -1,0 +1,12 @@
+@prefix measurement: <http://www.agfa.com/w3c/orbis/orbis-schema/Measurement#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.org/resource/Measurement/1> measurement:persnr <http://example.org/resource/Patient/1001>.
+<http://example.org/resource/Measurement/1> measurement:value 70.
+<http://example.org/resource/Measurement/1> measurement:type "Body Weight".
+<http://example.org/resource/Measurement/1> measurement:date "2016-05-01T00:00:00+01:00"^^xsd:dateTime.	
+	
+<http://example.org/resource/Measurement/2> measurement:persnr <http://example.org/resource/Patient/1001>.
+<http://example.org/resource/Measurement/2> measurement:value 75.
+<http://example.org/resource/Measurement/2> measurement:type "Body Weight".
+<http://example.org/resource/Measurement/2> measurement:date "2016-12-01T00:00:00+01:00"^^xsd:dateTime.	

@@ -1,0 +1,46 @@
+#
+# Generate an entity projection query
+#
+
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+
+{
+	?P => ?C.
+	?C e:labelvars ?C.	
+	?C e:graphList ?gl.	
+	
+	<http://eulersharp.sourceforge.net/2003/03swap/eye-builtins.n3>	log:semantics ?F.
+
+	[] 
+		e:findall (
+			{?s ?p ?o} {
+				?gl list:member ?m.
+				
+				
+				?m log:equalTo {?s ?p ?o}.	
+				
+				
+				?F log:notIncludes {?p a e:Builtin}.
+			} 
+			?result1
+			).
+			
+		[] 
+		e:findall (
+			{?s ?p ?o} {
+				?gl list:member ?m.
+				
+				
+				?m log:equalTo {?s ?p ?o}.	
+				
+				
+				?p e:label ?l.
+			} 
+			?result2
+			).		
+			
+	(?result1 ?result2) list:append ?result.		
+	?result log:conjunction ?output. 	
+}=> {?C => ?output}.

@@ -1,0 +1,8 @@
+@prefix natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>.
+@prefix patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.org/resource/Patient/1001> patient:persnr <http://example.org/resource/Natperson/1001>.
+<http://example.org/resource/Natperson/1001> natperson:vorname "Agfa".
+<http://example.org/resource/Natperson/1001> natperson:name "Healthcare".
+<http://example.org/resource/Natperson/1001> natperson:gebdat "2008-01-01T00:00:00+01:00"^^xsd:dateTime.

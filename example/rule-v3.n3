@@ -1,0 +1,64 @@
+@prefix common: <http://aca.agfa.net/resource/ontology/common#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>.
+@prefix patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>.
+@prefix schema: <http://schema.org/>.
+@prefix sct: <http://snomed.info/id/>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix measurement: <http://www.agfa.com/w3c/orbis/orbis-schema/Measurement#>.
+@prefix measurement: <http://www.agfa.com/w3c/orbis/orbis-schema/Measurement#>.
+
+{	
+	?patient patient:persnr ?person.
+} => {
+	?patient a sct:116154003.
+	?patient a schema:Person.
+}.
+
+
+# BIRTH DATE:
+{
+	?patient patient:persnr ?person.
+	?person natperson:gebdat ?birthDate.
+} => {
+	?patient schema:birthDate ?birthDate.
+}.
+
+
+# FAMILY NAME:
+{
+	?person natperson:name ?humanNameFamilyName.
+	?patient patient:persnr ?person.	
+} => {
+	?patient schema:familyName ?humanNameFamilyName.
+}.
+
+
+# FIRST NAME:
+{
+	?person natperson:vorname ?humanNameGivenName.
+	?patient patient:persnr ?person.	
+} => {
+	?patient schema:givenName ?humanNameGivenName.
+}.
+
+
+
+{
+	?measurement measurement:persnr ?patient.
+	?measurement measurement:value ?latestBodyWeight.
+	?measurement measurement:type "Body Weight".
+	?measurement measurement:date ?date.
+	
+	?SCOPE e:fail {		
+		?measurement2 measurement:persnr ?patient.
+		?measurement2 measurement:type "Body Weight".
+		?measurement2 measurement:date ?date2.
+		?date2 math:greaterThan ?date.
+	}.
+
+} => {
+	?patient common:latestBodyWeight ?latestBodyWeight.
+#	?patient human:weighs ?latestBodyWeight.
+}.

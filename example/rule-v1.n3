@@ -1,0 +1,47 @@
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>.
+@prefix patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>.
+@prefix schema: <http://schema.org/>.
+@prefix sct: <http://snomed.info/id/>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+{	
+	?patient patient:persnr ?person.
+} => {
+	?patient a sct:116154003.
+	?patient a schema:Person.
+}.
+
+
+# BIRTH DATE:
+{
+	?patient patient:persnr ?person.
+	?person natperson:gebdat ?birthDate.
+	?birthEvent e:tuple (?person).
+} => {
+	?patient schema:event ?birthEvent.
+	?birthEvent a sct:169811007.
+	?birthEvent schema:birthDate ?birthDate.
+}.
+
+
+# FAMILY NAME:
+{
+	?person natperson:name ?humanNameFamilyName.
+	?patient patient:persnr ?person.	
+	?humanName e:tuple (?patient).
+} => {
+	?patient vcard:hasName ?humanName.
+	?humanName schema:familyName ?humanNameFamilyName.
+}.
+
+
+# FIRST NAME:
+{
+	?person natperson:vorname ?humanNameGivenName.
+	?patient patient:persnr ?person.	
+	?humanName e:tuple (?patient).	
+} => {
+	?patient vcard:hasName ?humanName.
+	?humanName schema:givenName ?humanNameGivenName.
+}.

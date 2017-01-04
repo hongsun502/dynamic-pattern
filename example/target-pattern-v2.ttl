@@ -1,0 +1,31 @@
+#Processed by EYE v16.1209.1430 beta josd
+#eye --nope grounded-rule-v2.ttl --query entity_pattern_generator.n3q
+
+PREFIX var: <http://eulersharp.sourceforge.net/.well-known/genid/#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>
+PREFIX patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>
+PREFIX schema: <http://schema.org/>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX fn: <http://www.w3.org/2006/xpath-functions#>
+PREFIX crypto: <http://www.w3.org/2000/10/swap/crypto#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX time: <http://www.w3.org/2000/10/swap/time#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+PREFIX pred: <http://www.w3.org/2007/rif-builtin-predicate#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+
+var:patient a <http://schema.org/Person>.
+var:patient a <http://snomed.info/id/116154003>.
+var:patient <http://schema.org/birthDate> var:birthDate.
+var:patient <http://schema.org/familyName> var:humanNameFamilyName.
+var:patient <http://schema.org/givenName> var:humanNameGivenName.
+
+#2017-01-04T15:55:03.695Z in=531 out=5 ent=5 step=8 brake=4 inf=473355 sec=0.249 inf/sec=1901024
+#ENDS
+

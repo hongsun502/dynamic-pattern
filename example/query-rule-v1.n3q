@@ -1,0 +1,39 @@
+#Processed by EYE v16.1209.1430 beta josd
+#eye --nope rule-v1.n3 --query entity_projection_generator.n3q
+
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>
+PREFIX patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>
+PREFIX schema: <http://schema.org/>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX fn: <http://www.w3.org/2006/xpath-functions#>
+PREFIX crypto: <http://www.w3.org/2000/10/swap/crypto#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX time: <http://www.w3.org/2000/10/swap/time#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+PREFIX pred: <http://www.w3.org/2007/rif-builtin-predicate#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+
+{?U_0 a <http://snomed.info/id/116154003>.
+  ?U_0 a <http://schema.org/Person>} => {?U_0 a <http://schema.org/Person>.
+  ?U_0 a <http://snomed.info/id/116154003>}.
+{?U_1 <http://schema.org/event> ?U_2.
+  ?U_2 a <http://snomed.info/id/169811007>.
+  ?U_2 <http://schema.org/birthDate> ?U_3} => {?U_2 <http://schema.org/birthDate> ?U_3.
+  ?U_1 <http://schema.org/event> ?U_2.
+  ?U_2 a <http://snomed.info/id/169811007>}.
+{?U_4 vcard:hasName ?U_5.
+  ?U_5 <http://schema.org/familyName> ?U_6} => {?U_5 <http://schema.org/familyName> ?U_6.
+  ?U_4 vcard:hasName ?U_5}.
+{?U_7 vcard:hasName ?U_8.
+  ?U_8 <http://schema.org/givenName> ?U_9} => {?U_8 <http://schema.org/givenName> ?U_9.
+  ?U_7 vcard:hasName ?U_8}.
+
+#2017-01-04T15:55:02.137Z in=531 out=4 ent=4 step=8 brake=4 inf=583709 sec=0.249 inf/sec=2344213
+#ENDS
+

@@ -1,0 +1,23 @@
+#Processed by EYE v16.1209.1430 beta josd
+#eye --nope rule-v2.n3 --no-genid --pass-all-ground
+
+PREFIX var: <http://eulersharp.sourceforge.net/.well-known/genid/#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX natperson: <http://www.agfa.com/w3c/orbis/orbis-schema/Natperson#>
+PREFIX patient: <http://www.agfa.com/w3c/orbis/orbis-schema/Patient#>
+PREFIX schema: <http://schema.org/>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+{var:patient patient:persnr var:person} => {var:patient a <http://snomed.info/id/116154003>.
+  var:patient a <http://schema.org/Person>}.
+{var:patient patient:persnr var:person.
+  var:person natperson:gebdat var:birthDate} => {var:patient <http://schema.org/birthDate> var:birthDate}.
+{var:person natperson:name var:humanNameFamilyName.
+  var:patient patient:persnr var:person} => {var:patient <http://schema.org/familyName> var:humanNameFamilyName}.
+{var:person natperson:vorname var:humanNameGivenName.
+  var:patient patient:persnr var:person} => {var:patient <http://schema.org/givenName> var:humanNameGivenName}.
+
+#2017-01-04T15:55:02.617Z in=4 out=4 ent=4 step=8 brake=2 inf=32297 sec=0.046 inf/sec=702109
+#ENDS
+
