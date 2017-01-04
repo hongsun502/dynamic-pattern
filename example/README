@@ -1,0 +1,33 @@
+# FHIR pattern
+
+#1. generate dynamic target pattern
+eye --nope rule-v1.n3 --no-genid --pass-all-ground>grounded-rule-v1.ttl
+eye --nope grounded-rule-v1.ttl --query entity_pattern_generator.n3q > target-pattern-v1.ttl
+
+#2. generate query rule
+eye --nope rule-v1.n3 --query entity_projection_generator.n3q >query-rule-v1.n3q
+
+3. generate result
+eye --nope demographics.ttl rule-v1.n3 --query query-rule-v1.n3q>result-v1.ttl
+
+
+
+# Simplified pattern
+
+eye --nope rule-v2.n3 --no-genid --pass-all-ground>grounded-rule-v2.ttl
+eye --nope grounded-rule-v2.ttl --query entity_pattern_generator.n3q > target-pattern-v2.ttl
+
+eye --nope rule-v2.n3 --query entity_projection_generator.n3q >query-rule-v2.n3q
+
+eye --nope demographics.ttl rule-v2.n3 --query query-rule-v2.n3q>result-v2.ttl
+
+
+
+# Extended pattern (with weight info)
+
+eye --nope rule-v3.n3 --no-genid --pass-all-ground>grounded-rule-v3.ttl
+eye --nope grounded-rule-v3.ttl --query entity_pattern_generator.n3q > target-pattern-v3.ttl
+
+eye --nope rule-v3.n3 --query entity_projection_generator.n3q >query-rule-v3.n3q
+
+eye --nope demographics.ttl measurement.ttl rule-v3.n3 --query query-rule-v3.n3q>result-v3.ttl
